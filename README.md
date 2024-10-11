@@ -1,6 +1,6 @@
 # API de Gerenciamento de Estoque
 
-Este projeto é uma **API de Gerenciamento de Estoque** desenvolvida para o **Projeto Integrado** do curso de **Análise e Desenvolvimento de Software**. A API permite realizar operações de gerenciamento de estoque (CRUD) e também inclui funcionalidades de geração de relatórios de estoque.
+Este projeto é uma **API de Gerenciamento de Estoque** desenvolvida para o **Projeto Integrado** do curso de **Análise e Desenvolvimento de Sistemas**. A API permite realizar operações de gerenciamento de estoque (CRUD) e também inclui funcionalidades de geração de relatórios de estoque.
 
 **Status**: Este projeto está **em desenvolvimento** e tem como objetivo atender aos requisitos do trabalho da faculdade.
 
