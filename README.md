@@ -22,8 +22,4 @@ As seguintes ferramentas e tecnologias foram utilizadas para o desenvolvimento d
 - **PostgreSQL**: Banco de dados relacional utilizado para armazenar as informações do estoque.
 - **Insomnia**: Ferramenta para testar e documentar as requisições da API.
 
-## Instalação e Configuração
 
-1. Clone este repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
