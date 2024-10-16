@@ -1,66 +1,46 @@
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient } from "@prisma/client";
 
-export class ProdutoService {
-    
-    constructor () {
-
+export class ProdutoServices {
+    constructor() {
         this.prisma = new PrismaClient()
     }
 
-
     async create(data) {
+        
+        const { nome } = data;
 
         try {
-            const produto = await this.prisma.produtos.create({
-                data
-            }) 
-
-        return produto
-        
-        } catch (err) {
-
-            console.log(err)
-        
-        }
-
-    }
-
-    async showProduto(id) {
-
-        try {
-
-            const produto = await this.prisma.produtos.findFirst({
+            
+            const nomeProduto = await this.prisma.produtos.findMany({
                 where: {
-                    id
+                    nome: nome
                 }
-            })
+            });
 
-            if (!produto) {
+            if (nomeProduto.length > 0) {
+                const error = new Error();
+                error.status = 400;
+                error.details = {
+                    nome: nomeProduto.nome,
+                    message: 'Esse produto já existe no estoque'
+                };
 
-                return {message: 'produto não encotrado'}
+                throw error;
             }
 
-            return produto
+            const produto = await this.prisma.produtos.create({
+                data
+            });
 
-        } 
-        catch(err) {
-            console.log(err)
-            return {message: 'erro ao completar a açao'}
-        }
+            return { message: 'Produto criado com sucesso', produto };
+
+        } catch (erro) {
+            console.error(erro);
+
+            if (erro.status) {
+                throw erro; 
+            }
+
+            return { message: 'Erro inesperado ao criar o produto' };
     }
-
-    async read() {
-
-        try {
-
-            return this.prisma.produtos.findMany()
-
-        }
-
-        catch (err) {
-            console.log(err)
-            return {message: 'erro inesperado'}
-        }
-    }
-
-}
+    }}
