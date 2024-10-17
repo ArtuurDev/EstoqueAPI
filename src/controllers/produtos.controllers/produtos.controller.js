@@ -29,11 +29,10 @@ routerProdutos.post('/', async (req, res) => {
         return res.status(400).json({message: 'A movimentação do produto deve ser um number e todos os campos são obrigatorios'})
     }
 
-
     try {
 
         const produto = await produtoService.create(data)
-        return res.status(200).json({message: 'produto criado com sucesso'})
+        return res.status(200).json({message: 'produto criado com sucesso', produto})
     } catch (err) {
         const status = err.status || 500
         const message = err.details || 'erro interno no servidor'
