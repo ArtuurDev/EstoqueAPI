@@ -1,12 +1,12 @@
 import express from 'express'
-import router from './src/controllers/produtos.controller.js';
 const app = express() 
+import routerProdutos from './src/controllers/produtos.controllers/produtos.controller.js';
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
 
 // 
-app.use('/', router)
+app.use('/', routerProdutos)
 
 
 app.listen(3000, () => {

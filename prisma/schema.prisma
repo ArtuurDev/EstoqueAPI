@@ -18,11 +18,33 @@ model produtos {
 
   id     Int   @id @default(autoincrement())
   nome   String   
-  categoria     String
-  preco      String
+  preco      Float
   localizacaoNoDeposito  String
-  quantidadeEmEstoque    String
+  quantidadeEmEstoque    Int
+  criadoEm   DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+  categorias categorias @relation(fields: [categoriaId], references: [id])
+  categoriaId Int
+  movimentacaoId  Int
+  movimentacoes movimentacoes @relation(fields: [movimentacaoId], references: [id])
   
+}
+
+model categorias {
+
+  id   Int   @id @default(autoincrement()) 
+  nome  String
+  descricao String
+  produtos  produtos[] 
+  
+}
+
+
+model movimentacoes {
+
+  id Int @id @default(autoincrement())
+  tipo  String
+  produto produtos[]
 
 }
 
